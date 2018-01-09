@@ -36,19 +36,19 @@ int main() {
     // False : vide, True : vie
     vector<vector<bool>> grilleJeu(NB_LIGNES, vector<bool>(NB_COLL, false));
 
-    // 0 : reste vide, 1 : reste plein, 2 : devient vide, 3 : devient plein
+
     vector<vector<bool>> anticipation(NB_LIGNES, vector<bool>(NB_COLL));
     
     initialisationGrilleJeu(grilleJeu);
     afficherGrilleJeu(grilleJeu);
 
     
-    for(int i = 0; i <= 100; ++i){
+    for(int i = 0; i <= 10; ++i){
        
     
-    evolution(grilleJeu, anticipation);
-    grilleJeu = anticipation;
-    afficherGrilleJeu(grilleJeu);
+      evolution(grilleJeu, anticipation);
+      grilleJeu = anticipation;
+      afficherGrilleJeu(grilleJeu);
     
     
 
@@ -112,8 +112,8 @@ bool estVivant(const vector<vector<bool>> &grilleJeu, size_t posx, size_t posy )
          
          if((i != 0 || j != 0) 
                  && posy + i >=0 && posx + j >= 0
-                 && posy + i < NB_LIGNES && posx + j < NB_COLL){
-            
+                 && posy + i < NB_LIGNES && posx + j < NB_COLL
+                 && grilleJeu[posy + i][posx + j]){
             cpt++;
          }
    
