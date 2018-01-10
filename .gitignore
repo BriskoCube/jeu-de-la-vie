@@ -3,3 +3,7 @@
 cmake-build-debug
 
 nbproject
+build
+dist
+build/Debug/MinGW-Windows/main.o
+dist/Debug/MinGW-Windows/jeu-de-la-vie.exe
