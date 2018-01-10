@@ -74,11 +74,9 @@ void initialisationGrilleJeu(vector<vector<bool>>& grilleJeu){
 }
 
 void evolution(const vector<vector<bool>> &grilleJeu, vector<vector<bool>> &anticipation) {
-   
-   size_t col, ligne;
 
-   for(size_t i = 0; i < ligne; i++){
-       for(size_t j = 0; j < col; j++){
+   for(size_t i = 0; i < grilleJeu.size(); i++){
+       for(size_t j = 0; j < grilleJeu[0].size(); j++){
            anticipation[i][j] = estVivant(grilleJeu, j, i);
        }
    }
