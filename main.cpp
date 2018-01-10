@@ -32,17 +32,18 @@ const char CAR_MORT = '.';
 //Doit être impaire
 const size_t ZONE_INFLUANCE = 3;
 
-vector<vector<int>> VALEUR_PAR_DEFAULT {
-        {4,4},
-        {4,5},
-        {4,6},
-        {5,5}
+const size_t MOTIF_X = 4;
+const size_t MOTIF_Y = 4;
+
+//forme à insérer
+vector<string> MOTIF_PAR_DEFAULT {
+    ".x.",
+    "..x",
+    "xxx"
 };
 
-void initialisationGrilleJeu(vector<vector<bool>> &grilleJeu);
-void afficherGrilleJeu(const vector<vector<bool>> &grilleJeu);
-void evolution(const vector<vector<bool>> &grilleJeu, vector<vector<bool>> &anticipation);
-bool estVivant(const vector<vector<bool>> &grilleJeu, size_t posx, size_t posy );
+
+
 //void evolution(vector<vector<bool>> grilleJeu, const vector<vector<bool>> &anticipation);
 
 
@@ -52,7 +53,8 @@ int main() {
     vector<vector<bool>> grilleJeu(NB_LIGNES, vector<bool>(NB_COLL, false));
     vector<vector<bool>> anticipation(NB_LIGNES, vector<bool>(NB_COLL));
     
-    initialisationGrilleJeu(grilleJeu);
+    initialisationGrilleJeu(grilleJeu, MOTIF_PAR_DEFAULT, MOTIF_X, MOTIF_Y);
+
     afficherGrilleJeu(grilleJeu);
 
     for(int i = 0; i <= ITERATION; ++i){
@@ -66,73 +68,7 @@ int main() {
     return EXIT_SUCCESS;
 }
 
-void initialisationGrilleJeu(vector<vector<bool>>& grilleJeu){
-    grilleJeu[4][4] = true;
-    grilleJeu[4][5] = true;
-    grilleJeu[4][6] = true;
-    grilleJeu[5][5] = true;
-}
 
-void evolution(const vector<vector<bool>> &grilleJeu, vector<vector<bool>> &anticipation) {
-
-   for(size_t i = 0; i < grilleJeu.size(); i++){
-       for(size_t j = 0; j < grilleJeu[0].size(); j++){
-           anticipation[i][j] = estVivant(grilleJeu, j, i);
-       }
-   }
-}
-
-void afficherGrilleJeu(const vector<vector<bool>>& grilleJeu){
-
-    string ecran = "";
-
-    size_t col, ligne;
-
-    if((ligne = grilleJeu.size()) != 0 && (col = grilleJeu[0].size()) != 0){
-
-        for(size_t i = 0; i < ligne; i++){
-            for(size_t j = 0; j < col; j++){
-                ecran += string(1, grilleJeu[i][j] ? CAR_EN_VIE : CAR_MORT) + " ";
-            }
-            ecran += "\n\r";
-        }
-
-        cout << ecran << endl;
-    }
-}
-
-bool estVivant(const vector<vector<bool>> &grilleJeu, size_t posx, size_t posy ){
-
-   unsigned cpt = 0;
-   
-   bool estVivant = grilleJeu[posy][posx];
-
-    int domaineDef = ZONE_INFLUANCE / 2;
-
-   for(int i = -domaineDef; i <= domaineDef; i++){
-      for(int j = -domaineDef; j <= domaineDef; j++){
-         
-         if((i != 0 || j != 0) 
-                 && posy + i >=0 && posx + j >= 0
-                 && posy + i < NB_LIGNES && posx + j < NB_COLL
-                 && grilleJeu[posy + i][posx + j]){
-            cpt++;
-         }
-   
-      }
-   }
-   
-   
-   if(estVivant && (cpt == 2 || cpt == 3)){
-      return true;
-   }
-   else if(!estVivant && cpt == 3){
-      return true;
-   }
-   
-   return false;
-   
-}
 
 
 /*void nombreVoisin(const vector<vector<bool>> &grilleJeu, vector<vector<int>> &){
