@@ -14,15 +14,17 @@
 */
 
 
+#include <iostream>
 #include "grille.h"
 
 using namespace std;
 
 
+
 void initialisationGrilleJeu(vector<vector<bool>>& grilleJeu, const vector<string>& motif, int motifX, int motifY){
     for(size_t i = 0; i < motif.size(); i++){
         for(size_t j = 0; j < motif[i].length(); j++){
-            grilleJeu[i + motifY][j + motifX] = motif[i][j] == 'x';
+            grilleJeu[i + motifY][j + motifX] = motif[i][j] == CAR_EN_VIE;
         }
     }
 }

@@ -18,6 +18,9 @@
 #include <vector>
 #include <string>
 
+#include "jeu.h"
+#include "grille.h"
+
 using namespace std;
 
 
@@ -26,11 +29,7 @@ const size_t NB_LIGNES = 10;
 
 const unsigned ITERATION = 8;
 
-const char CAR_EN_VIE = 'X';
-const char CAR_MORT = '.';
 
-//Doit être impaire
-const size_t ZONE_INFLUANCE = 3;
 
 const size_t MOTIF_X = 4;
 const size_t MOTIF_Y = 4;
@@ -67,23 +66,3 @@ int main() {
 
     return EXIT_SUCCESS;
 }
-
-
-
-
-/*void nombreVoisin(const vector<vector<bool>> &grilleJeu, vector<vector<int>> &){
-
-    string ecran = "";
-
-    size_t col, ligne;
-
-
-    if((ligne = grilleJeu.size()) != 0 && (col = grilleJeu[0].size()) != 0){
-
-        for(size_t i = 0; i < ligne; i++){
-            for(size_t j = 0; j < col; j++){
-            }
-        }
-    }
-
-}*/

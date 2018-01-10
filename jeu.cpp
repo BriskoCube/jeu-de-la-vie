@@ -15,8 +15,12 @@
 
 
 #include "jeu.h"
+#include "grille.h"
 
 using namespace std;
+
+
+
 
 void evolution(const vector<vector<bool>> &grilleJeu, vector<vector<bool>> &anticipation) {
 
@@ -42,7 +46,7 @@ bool estVivant(const vector<vector<bool>> &grilleJeu, size_t posx, size_t posy )
 
             if((i != 0 || j != 0)
                && posy + i >=0 && posx + j >= 0
-               && posy + i < NB_LIGNES && posx + j < NB_COLL
+               && posy + i < grilleJeu.size() && posx + j < grilleJeu[0].size()
                && grilleJeu[posy + i][posx + j]){
                 cpt++;
             }

@@ -21,7 +21,10 @@
 
 #include <string>
 
-void initialisationGrilleJeu(std::vector<std::vector<bool>>& grilleJeu, const std::vector<std::string>& motif, int motifX, int motifY);
-void afficherGrilleJeu(const std::vector<std::vector<bool>> &grilleJeu);
+    const char CAR_EN_VIE = 'x';
+    const char CAR_MORT = '.';
+
+    void initialisationGrilleJeu(std::vector<std::vector<bool>>& grilleJeu, const std::vector<std::string>& motif, int motifX, int motifY);
+    void afficherGrilleJeu(const std::vector<std::vector<bool>> &grilleJeu);
 
 #endif //JEU_DE_LA_VIE_GRILLE_H

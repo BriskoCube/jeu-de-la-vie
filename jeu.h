@@ -20,6 +20,9 @@
     #include <cstdlib>
     #include <vector>
 
+    //Doit être impaire
+    const size_t ZONE_INFLUANCE = 3;
+
     void evolution(const std::vector<std::vector<bool>> &grilleJeu, std::vector<std::vector<bool>> &anticipation);
     bool estVivant(const std::vector<std::vector<bool>> &grilleJeu, size_t posx, size_t posy );
 
