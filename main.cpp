@@ -7,7 +7,9 @@
  But         : Simulation du jeu de la vie de John Horton. La simulation est réalisée pour un nombre donné d'essais
                avec une position initiale donnée.
 
- Remarque(s) : Aucune saisie possible par l'utilisateur. Toute la fonfiguration est effectuée dans le code
+ Remarque(s) : Aucune saisie possible par l'utilisateur. Toute la fonfiguration est effectuée dans le code.
+               Le motif par défault est saisi sous forme de tableau de strings afin de simplifier la saisie d'un motif
+               compliqué
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
