@@ -24,12 +24,14 @@
 
 using namespace std;
 
-
+// Taille de la grille
 const size_t NB_COLL = 11;
 const size_t NB_LIGNES = 10;
 
+// Nombre d'itérations à effectuer
 const unsigned ITERATION = 8;
 
+// Caractères à afficher dans la console pour une case de la grille
 const char CAR_VIVANT = 'x';
 const char CAR_MORT = '.';
 
@@ -63,6 +65,8 @@ int main() {
       afficherGrille(grilleJeu, CAR_VIVANT, CAR_MORT);
 
    }
+
+   system("PAUSE");
 
    return EXIT_SUCCESS;
 }

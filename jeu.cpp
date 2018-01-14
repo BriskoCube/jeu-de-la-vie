@@ -23,6 +23,8 @@ const int ZONE_INFLUANCE = 1;
 
 const int INTERVAL_SURVIT[] = {2, 3};
 
+const int INTERVAL_NAISSANCE[] = {3, 3};
+
 
 void evolution(const vector<vector<bool>> &grilleJeu, vector<vector<bool>> &anticipation) {
 
@@ -36,27 +38,14 @@ void evolution(const vector<vector<bool>> &grilleJeu, vector<vector<bool>> &anti
 
 bool estVivant(const vector<vector<bool>> &grilleJeu, size_t posx, size_t posy) {
 
-   unsigned cpt = 0;
-
    bool estVivant = grilleJeu[posy][posx];
 
-   for (int i = -ZONE_INFLUANCE; i <= ZONE_INFLUANCE; i++) {
-      for (int j = -ZONE_INFLUANCE; j <= ZONE_INFLUANCE; j++) {
-
-         if ((i != 0 || j != 0)
-             && posy + i >= 0 && posx + j >= 0
-             && posy + i < grilleJeu.size() && posx + j < grilleJeu[0].size()
-             && grilleJeu[posy + i][posx + j]) {
-            cpt++;
-         }
-
-      }
-   }
+   unsigned nbVoisins = nombreVoisins(grilleJeu, posx, posy, ZONE_INFLUANCE);
 
 
-   if (estVivant && estDansInterval(cpt, INTERVAL_SURVIT)) {
+   if (estVivant && estDansInterval(nbVoisins, INTERVAL_SURVIT)) {
       return true;
-   } else if (!estVivant && cpt == 3) {
+   } else if (!estVivant && estDansInterval(nbVoisins, INTERVAL_NAISSANCE)) {
       return true;
    }
 
@@ -66,4 +55,22 @@ bool estVivant(const vector<vector<bool>> &grilleJeu, size_t posx, size_t posy) 
 
 bool estDansInterval(unsigned value, const int interval[2]) {
    return value >= interval[0] && value <= interval[1];
+}
+
+unsigned nombreVoisins(const std::vector<std::vector<bool>> &grilleJeu, size_t posx, size_t posy, int zoneInfluance){
+
+   unsigned cpt = 0;
+
+   for (int i = -zoneInfluance; i <= zoneInfluance; i++) {
+      for (int j = -zoneInfluance; j <= zoneInfluance; j++) {
+         if ((i != 0 || j != 0)
+             && posy + i >= 0 && posx + j >= 0
+             && posy + i < grilleJeu.size() && posx + j < grilleJeu[0].size()
+             && grilleJeu[posy + i][posx + j]) {
+            cpt++;
+         }
+      }
+   }
+
+   return cpt;
 }

@@ -4,7 +4,7 @@
  Fichier     : grille.h
  Auteur(s)   : Hugo Jeanneret, Julien Quartier
  Date        : 08.01.2018
- But         :
+ But         : Gestion de la grille totale avec l'affichage et l'initalisation
 
  Remarque(s) :
 
@@ -23,11 +23,11 @@
 
 
 /**
- * \brief
- * \param grilleJeu
- * \param motif
- * \param motifX
- * \param motifY
+ * \brief Inintialise la grille avec un motif.
+ * \param grilleJeu Grille à initialiser
+ * \param motif Motif à insérer
+ * \param motifX Position en x du coin en haut à gauche
+ * \param motifY Position en y du coin en haut à gauche
  */
 void initialisationGrille(std::vector<std::vector<bool>> &grilleJeu, const std::vector<std::string> &motif,
                           int motifX, int motifY, char carVivant);
