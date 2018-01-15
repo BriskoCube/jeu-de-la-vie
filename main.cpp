@@ -42,10 +42,6 @@ vector<string> MOTIF_PAR_DEFAULT {
 };
 
 
-
-//void evolution(vector<vector<bool>> grilleJeu, const vector<vector<bool>> &anticipation);
-
-
 int main() {
 
     // False : vide, True : vie
